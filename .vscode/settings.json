@@ -1,0 +1,16 @@
+// 將您的設定放入此檔案中以覆寫預設值和使用者設定。
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "Demo/**.js": true,
+        "Demo/**.map": true,
+        ".vscode": true,
+        "node_modules": true,
+        "favicon.ico": true,
+        "package.json": true,
+        "tsconfig.json": true
+    }
+}
