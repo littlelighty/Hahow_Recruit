@@ -4,13 +4,9 @@
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
-        "**/.DS_Store": true,
-        "Demo/**.js": true,
-        "Demo/**.map": true,
-        ".vscode": true,
-        "node_modules": true,
-        "favicon.ico": true,
-        "package.json": true,
-        "tsconfig.json": true
-    }
+        "app/**.js": true,
+        "app/**.map": true,
+        "**.json": true,
+        "favicon.ico": true
+    },
 }
