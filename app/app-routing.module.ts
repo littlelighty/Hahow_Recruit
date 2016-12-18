@@ -1,3 +1,5 @@
+// 定義routing的path與其對應的component的模組
+
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

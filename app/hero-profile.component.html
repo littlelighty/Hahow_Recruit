@@ -7,7 +7,7 @@
 <!--<my-hero-profile [hero]="selectedHero"></my-hero-profile>-->
 
 <div *ngIf="hero&&profile" class="heroProfile">
-  <!--<h2>{{hero.name}} profile!</h2>-->
+  <h2>{{hero.name}} profile</h2>
   <li id="str_1" class="skill">STR
     <div class="add" (click)="addStr();">+</div>
     <div class="skill_val">{{profile.str}}</div>

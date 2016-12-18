@@ -1,7 +1,6 @@
+//定義hero之結構
 export class Hero {
-  constructor(
-    public id: number,
-    public name: string,
-    public image: string) { }
-  
+  id: number;
+  name: string;
+  image: string;
 }

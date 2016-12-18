@@ -1,145 +1,60 @@
-# Angular QuickStart Source
-[![Build Status][travis-badge]][travis-badge-url]
+# Hahow Recruit Project - Alex Chen
+
+粗體： **...**
+連結： [文字](網址)
+列點： *
+標題： #
+小標題： ##
+斜體： ###
+文字灰背景： `...`
+大塊灰背景： ```bash ... ```b
+也可以用HTML的語法來寫
+
+這份README會分成以下幾個部份
+* 如何執行完成的package
+* 專案的架構，Web的架構邏輯
+* 註解的原則，遇到什麼狀況會寫註解
+* 專案中遇到的困難、問題，以及解決的方法
+
 
 This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
 the foundation for most of the documentation samples and potentially a good starting point for your application.
 
-It's been extended with testing support so you can start writing tests immediately.
 
-**This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular**
+## 如何執行
 
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
+這份專案是用Angular搭配Node.js與npm做開發
+若還沒有安裝過，<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
+可以到此下載</a> 
 
-## Prerequisites
-
-Node.js and npm are essential to Angular development. 
-    
-<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
-Get it now</a> if it's not already installed on your machine.
- 
-**Verify that you are running at least node `v4.x.x` and npm `3.x.x`**
-by running `node -v` and `npm -v` in a terminal/console window.
-Older versions produce errors.
-
-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.
-
-## Create a new project based on the QuickStart
-
-Clone this repo into new project folder (e.g., `my-proj`).
+接著對此Repository進行以下步驟：
 ```bash
-git clone  https://github.com/angular/quickstart  my-proj
-cd my-proj
-```
-
-We have no intention of updating the source on `angular/quickstart`.
-Discard everything "git-like" by deleting the `.git` folder.
-```bash
-rm -rf .git  # non-Windows
-rd .git /S/Q # windows
-```
-
-### Create a new git repo
-You could [start writing code](#start-development) now and throw it all away when you're done.
-If you'd rather preserve your work under source control, consider taking the following steps.
-
-Initialize this project as a *local git repo* and make the first commit:
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-```
-
-Create a *remote repository* for this project on the service of your choice.
-
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
-```bash
-git remote add origin <repo-address>
-git push -u origin master
-```
-## Install npm packages
-
-> See npm and nvm version notes above
-
-Install the npm packages described in the `package.json` and verify that it works:
-
-```bash
-npm install
+git clone https://github.com/littlelighty/Hahow_Recruit  FOLDER_NAME
+cd my-FOLDER_NAME
 npm start
 ```
+npm會暫時為你架一個後台來跑這個專案，可透過`Ctrl-C`中斷
 
-The `npm start` command first compiles the application, 
-then simultaneously re-compiles and runs the `lite-server`.
-Both the compiler and the server watch for file changes.
 
-Shut it down manually with `Ctrl-C`.
+## 專案的架構，Web的架構邏輯
 
-You're ready to write your application.
+主要檔案皆置於app資料夾
+* app.component 為最上層的component
+* hero-list.component 為下一層的component，用來顯示hero list(即每一個hero card)
+* hero-profile.component 則是用來顯示個別hero的詳細屬性
+* hero.service & profile.service 分別用來對hero資料與profile資料API進行GET與PATCH的動作
+* hero & profile 分別定義hero與profile的結構
+* app-routing.module 定義routing的path與其對應的component
 
-### npm scripts
 
-We've captured many of the most useful commands in npm scripts defined in the `package.json`:
+## 註解的原則，遇到什麼狀況會寫註解
+* 檔案開頭都大概說明這份檔案是用來做什麼的
+* 檔案內的各個函式進行簡單說明
 
-* `npm start` - runs the compiler and a server at the same time, both in "watch mode".
-* `npm run tsc` - runs the TypeScript compiler once.
-* `npm run tsc:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
-* `npm run lite` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by
-[John Papa](https://github.com/johnpapa) and
-[Christopher Martin](https://github.com/cgmartin)
-with excellent support for Angular apps that use routing.
 
-Here are the test related scripts:
-* `npm test` - compiles, runs and watches the karma unit tests
-* `npm run e2e` - run protractor e2e tests, written in JavaScript (*e2e-spec.js)
-
-## Testing
-
-The QuickStart documentation doesn't discuss testing.
-This repo adds both karma/jasmine unit test and protractor end-to-end testing support.
-
-These tools are configured for specific conventions described below.
-
-*It is unwise and rarely possible to run the application, the unit tests, and the e2e tests at the same time.
-We recommend that you shut down one before starting another.*
-
-### Unit Tests
-TypeScript unit-tests are usually in the `app` folder. Their filenames must end in `.spec`.
-
-Look for the example `app/app.component.spec.ts`.
-Add more `.spec.ts` files as you wish; we configured karma to find them.
-
-Run it with `npm test`
-
-That command first compiles the application, then simultaneously re-compiles and runs the karma test-runner.
-Both the compiler and the karma watch for (different) file changes.
-
-Shut it down manually with `Ctrl-C`.
-
-Test-runner output appears in the terminal window.
-We can update our app and our tests in real-time, keeping a weather eye on the console for broken tests.
-Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (`Ctrl-C`) and
-restart it. No worries; it's pretty quick.
-
-### End-to-end (E2E) Tests
-
-E2E tests are in the `e2e` directory, side by side with the `app` folder.
-Their filenames must end in `.e2e-spec.ts`.
-
-Look for the example `e2e/app.e2e-spec.ts`.
-Add more `.e2e-spec.js` files as you wish (although one usually suffices for small projects);
-we configured protractor to find them.
-
-Thereafter, run them with `npm run e2e`.
-
-That command first compiles, then simultaneously starts the Http-Server at `localhost:8080`
-and launches protractor.  
-
-The pass/fail test results appear at the bottom of the terminal window.
-A custom reporter (see `protractor.config.js`) generates a  `./_test-output/protractor-results.txt` file
-which is easier to read; this file is excluded from source control.
-
-Shut it down manually with `Ctrl-C`.
-
-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/angular/quickstart
+## 專案中你遇到的困難、問題，以及解決的方法
+困難說真的很多，其中包括有點高估了自己的學習能力，想說先學紮實一點，花了很多時間上了在Hahow上買的墨雨設計-吳哲宇老師的前端課程，重新學習HTML、CSS，並進一步學習jquery與ajax，同時也向朋友請教git的使用。
+在實作了幾個專案後覺得熟悉了，開始先用codepen試寫看看，但後來發現如果在codepen寫完再移到Angular上，其實有些部分是會衝突的。
+像是原本的HTML會被分成很多塊，有些排版的方式需要做調整；或是如果用課程教的方法用jquery與ajax去取得API的資料，那就沒辦法用到Angular一些data binding的功能。此外Angular的MVC架構會把一個專案分成非常多小塊，讓我非常不習慣。
+等我意識到要開始好好學Angular時已經只剩3天半，先是在youtube上找了個Angular教學影片，但講的實在有點太淺，才又找了官方tutorial開始學習，並開始了崩潰的Angular學習之旅。
+其實老實說學得有點跌跌撞撞，也必須說最後這份專案並沒有做得很成功，還是有些bug，但依然很慶幸身邊有非常多厲害的人願意讓我問，不管是直接讓我去找他或是用skype分享螢幕向我做一些簡單教學，都讓我的學習效率能提升不少，即便最後沒有上，但我覺得是個非常特別的經驗，上次這樣密集寫code趕deadline應該是大三的時候了吧XD

@@ -1,3 +1,5 @@
+// 最上層component，下面有hero-list與hero-profile兩個component
+
 import { Component } from '@angular/core';
 import { Route, RouterModule }   from '@angular/router';
 @Component({

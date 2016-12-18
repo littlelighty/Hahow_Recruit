@@ -1,3 +1,5 @@
+//用來顯示個別hero的詳細屬性的component
+
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router }   from '@angular/router';
 import { Location }                 from '@angular/common';
@@ -16,6 +18,7 @@ import { ProfileService } from './profile.service';
   styleUrls: ['./hero-profile.component.css'],
   providers: [HeroService, ProfileService]
 })
+
 export class HeroProfileComponent implements OnInit {
   @Input()
   errorMessage: string;
@@ -37,6 +40,7 @@ export class HeroProfileComponent implements OnInit {
     private location: Location
   ) {}
 
+  //取得hero list
   getHeroes() {
     this.heroService.getHeroes()
                      .then(
@@ -44,6 +48,7 @@ export class HeroProfileComponent implements OnInit {
                        error =>  this.errorMessage = <any>error);
   }
 
+  //取得個別hero資料
   getHero() {
     this.route.params
       .switchMap((params: Params) => this.heroService.getHero(+params['id']))
@@ -51,40 +56,31 @@ export class HeroProfileComponent implements OnInit {
       console.log(this.hero);
   }
 
+  //取得個別hero詳細屬性
   getProfile() {
     this.route.params
       .switchMap((params: Params) => this.profileService.getProfile(+params['id']))
       .subscribe(profile => this.profile = profile);
   }
 
+  //讓程式非同步適時去執行3個函式
   ngOnInit(): void {
     this.getHeroes();
     this.getHero();
     this.getProfile();
-    // this.profile = {"str":5,"int":9,"agi":6,"luk":5}
-    // this.profile = { }
   }
-    // this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
-    // this.profileService.getProfile(1)
-    //   .then(profile => this.profile = profile);
-    // this.profileService.getProfile(2)
-    //   .then(profile => this.profile = profile);
-    // this.profileService.getProfile(3)
-    //   .then(profile => this.profile = profile);
-    // this.profileService.getProfile(4)
-    //   .then(profile => this.profile = profile);
 
-    
-
+  //確認有get到hero資料用
   ngDoCheck() {
     if (this.hero) {
       if (this.prevHero === undefined || this.prevHero.id !== this.hero.id) {
         this.prevHero = this.hero
         this.onSelect(this.hero)
-        
       }
     }
   }
+
+  //點擊hero card要變換網址並去取得該hero的詳細屬性，同時計算屬性能力點數總和
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
     this.router.navigate(['/heroes', this.selectedHero.id]);
@@ -96,16 +92,7 @@ export class HeroProfileComponent implements OnInit {
       })
   }
 
-  // selectOthers(): void {
-  //   this.router.navigate(['/heroes', this.selectedHero.id]);
-  //   this.profileService.getProfile(this.selectedHero.id)
-  //     .then(profile => {
-  //       this.profile = profile
-  //       this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
-  //       this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
-  //     })
-  // }
-
+  //下列為屬性能力值加減按鈕用之函式
   addStr() :void{
     if(this.skillPointLeft<=0)
       return;
@@ -178,8 +165,9 @@ export class HeroProfileComponent implements OnInit {
     }
   }
 
+  //將更改完之能力值update
   save() :void{
-    console.log('yo')
+    // console.log('yo')
     if(this.skillPointLeft==0){
       this.profileService.saveProfile(this.selectedHero.id, this.profile)
         .then((result) => {
