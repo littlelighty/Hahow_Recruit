@@ -11,14 +11,23 @@ import { HeroService } from './hero.service';
   providers: [HeroService]
 })
 export class HeroListComponent implements OnInit {
+  errorMessage: string;
   heroes: Hero[];
   selectedHero: Hero;
+  mode = 'Observable';
 
   constructor(private heroService: HeroService) { }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  getHeroes() {
+    this.heroService.getHeroes()
+                     .then(
+                       heroes => this.heroes = heroes,
+                       error =>  this.errorMessage = <any>error);
   }
+  
+  // getHeroes(): void {
+  //   this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  // }
 
   ngOnInit(): void {
     this.getHeroes();

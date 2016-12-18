@@ -1,4 +1,4 @@
-<div *ngIf="hero" class="grid grid-pad" id="heroList">
+<div class="grid grid-pad" id="heroList">
     <div *ngFor="let hero of heroes" class="heroCard" [class.selected]="hero === selectedHero" (click)="onSelect(hero);selectOthers();" >
         <img class="heroImg" src="{{hero.image}}" />
         <h2 class="heroName">{{hero.name}}</h2>

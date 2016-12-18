@@ -14,18 +14,20 @@ import { ProfileService } from './profile.service';
   selector: 'my-hero-profile',
   templateUrl: `./hero-profile.component.html`,
   styleUrls: ['./hero-profile.component.css'],
-  providers: [ProfileService]
+  providers: [HeroService, ProfileService]
 })
 export class HeroProfileComponent implements OnInit {
   @Input()
+  errorMessage: string;
   hero: Hero;
   profile: Profile;
   selectedHero: Hero;
   selectedProfile: Profile;
   total: number;
   skillPointLeft: number;
-  heroes: Hero[] = [];
-
+  heroes: Hero[];
+  mode = 'Observable';
+prevHero:Hero;
   constructor(
     private router: Router,
     private heroService: HeroService,
@@ -34,18 +36,31 @@ export class HeroProfileComponent implements OnInit {
     private location: Location
   ) {}
 
-  ngOnInit(): void {
+  getHeroes() {
     this.heroService.getHeroes()
-      .then(heroes => this.heroes = heroes);
+                     .then(
+                       heroes => this.heroes = heroes,
+                       error =>  this.errorMessage = <any>error);
+  }
 
+  getHero() {
     this.route.params
       .switchMap((params: Params) => this.heroService.getHero(+params['id']))
       .subscribe(hero => this.hero = hero);
-    
+      console.log(this.hero);
+  }
+
+  getProfile() {
     this.route.params
       .switchMap((params: Params) => this.profileService.getProfile(+params['id']))
       .subscribe(profile => this.profile = profile);
+  }
 
+  ngOnInit(): void {
+    this.getHeroes();
+    this.getHero();
+    this.getProfile();
+  }
     // this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
     // this.profileService.getProfile(1)
     //   .then(profile => this.profile = profile);
@@ -55,22 +70,32 @@ export class HeroProfileComponent implements OnInit {
     //   .then(profile => this.profile = profile);
     // this.profileService.getProfile(4)
     //   .then(profile => this.profile = profile);
+  ngDoCheck() {
+    if (this.hero) {
+      if (this.prevHero === undefined || this.prevHero.id !== this.hero.id) {
+        this.prevHero = this.hero
+        this.onSelect(this.hero)
+      }
+    }
   }
-
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
     this.profileService.getProfile(this.selectedHero.id)
-      .then(profile => this.profile = profile);
-    this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
-    this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
+      .then(profile => {
+        this.profile = profile
+        this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
+        this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
+      })
   }
 
   selectOthers(): void {
     this.router.navigate(['/heroes', this.selectedHero.id]);
     this.profileService.getProfile(this.selectedHero.id)
-      .then(profile => this.profile = profile);
-    this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
-    this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
+      .then(profile => {
+        this.profile = profile
+        this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
+        this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
+      })
   }
 
   addStr() :void{

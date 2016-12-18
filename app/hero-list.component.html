@@ -4,4 +4,5 @@
         <h2 class="heroName">{{hero.name}}</h2>
     </div>
 </div>
-<my-hero-profile [hero]="selectedHero"></my-hero-profile>
+<!--<my-hero-profile [hero]="selectedHero"></my-hero-profile>-->
+<p class="error" *ngIf="errorMessage">{{errorMessage}}</p>

@@ -9,8 +9,8 @@ import { RouterModule }   from '@angular/router';
 // import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }  from './app.component';
-import { HeroProfileComponent } from './hero-profile.component';
 import { HeroListComponent } from './hero-list.component';
+import { HeroProfileComponent } from './hero-profile.component';
 import { HeroService }         from './hero.service';
 
 import { AppRoutingModule }     from './app-routing.module';

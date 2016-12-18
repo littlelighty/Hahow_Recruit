@@ -3,6 +3,9 @@
   position: relative;
   color: #111;
 }
+.error{
+  color:red;
+}
 
  #heroList {
     border: solid 1px #111;
