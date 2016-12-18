@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Route, RouterModule }   from '@angular/router';
-import './rxjs-operators';
 @Component({
   selector: 'my-app',
   template: `

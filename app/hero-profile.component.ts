@@ -27,7 +27,8 @@ export class HeroProfileComponent implements OnInit {
   skillPointLeft: number;
   heroes: Hero[];
   mode = 'Observable';
-prevHero:Hero;
+  prevHero: Hero;
+  
   constructor(
     private router: Router,
     private heroService: HeroService,
@@ -60,6 +61,8 @@ prevHero:Hero;
     this.getHeroes();
     this.getHero();
     this.getProfile();
+    // this.profile = {"str":5,"int":9,"agi":6,"luk":5}
+    // this.profile = { }
   }
     // this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
     // this.profileService.getProfile(1)
@@ -70,25 +73,20 @@ prevHero:Hero;
     //   .then(profile => this.profile = profile);
     // this.profileService.getProfile(4)
     //   .then(profile => this.profile = profile);
+
+    
+
   ngDoCheck() {
     if (this.hero) {
       if (this.prevHero === undefined || this.prevHero.id !== this.hero.id) {
         this.prevHero = this.hero
         this.onSelect(this.hero)
+        
       }
     }
   }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
-    this.profileService.getProfile(this.selectedHero.id)
-      .then(profile => {
-        this.profile = profile
-        this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
-        this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
-      })
-  }
-
-  selectOthers(): void {
     this.router.navigate(['/heroes', this.selectedHero.id]);
     this.profileService.getProfile(this.selectedHero.id)
       .then(profile => {
@@ -97,6 +95,16 @@ prevHero:Hero;
         this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
       })
   }
+
+  // selectOthers(): void {
+  //   this.router.navigate(['/heroes', this.selectedHero.id]);
+  //   this.profileService.getProfile(this.selectedHero.id)
+  //     .then(profile => {
+  //       this.profile = profile
+  //       this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
+  //       this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
+  //     })
+  // }
 
   addStr() :void{
     if(this.skillPointLeft<=0)
@@ -169,6 +177,18 @@ prevHero:Hero;
       this.skillPointLeft+=1;
     }
   }
+
+  save() :void{
+    console.log('yo')
+    if(this.skillPointLeft==0){
+      this.profileService.saveProfile(this.selectedHero.id, this.profile)
+        .then((result) => {
+          console.log(result)
+      })
+    }
+  }
+
+
 }
 
 

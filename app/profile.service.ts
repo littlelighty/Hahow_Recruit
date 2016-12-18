@@ -18,16 +18,22 @@ export class ProfileService {
   constructor (private http: Http) {}
 
   getProfile(id: number): Promise<Profile>{
-    var str='http://hahow-recruit.herokuapp.com/heroes/'+id+'/profile'
-    return this.http.get(str)
+    var strGET='http://hahow-recruit.herokuapp.com/heroes/'+id+'/profile'
+    return this.http.get(strGET)
                     .toPromise()
                     .then(this.extractData)
                     .catch(this.handleError);
   }
   private extractData(res: Response) {
     console.log(res);
-    // let body = res.json();
     return JSON.parse(res['_body']) || { };
+  }
+
+    saveProfile(id: number, profile: Profile): Promise<Profile>{
+    var strPATCH='http://hahow-recruit.herokuapp.com/heroes/'+id+'/profile'
+    return this.http.patch(strPATCH, profile)
+                    .toPromise()
+                    .catch(this.handleError);
   }
 
   private handleError (error: Response | any) {
@@ -43,20 +49,5 @@ export class ProfileService {
     console.error(errMsg);
     return Promise.reject(errMsg);
   }
-  // getProfile(id: number): Promise<Profile>{
-  //   // var p = "PROFILE" + id;
-  //   return Promise.resolve(PROFILE1);
-  // }
-  // getProfile1(): Promise<Profile>{
-  //   return Promise.resolve(PROFILE1);
-  // }
-  // getProfile2(): Promise<Profile>{
-  //   return Promise.resolve(PROFILE2);
-  // }
-  // getProfile3(): Promise<Profile>{
-  //   return Promise.resolve(PROFILE3);
-  // }
-  // getProfile4(): Promise<Profile>{
-  //   return Promise.resolve(PROFILE4);
-  // }
+  
 }

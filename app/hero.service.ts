@@ -20,7 +20,8 @@ export class HeroService {
   private extractData(res: Response) {
     console.log(res);
     // let body = res.json();
-    return JSON.parse(res['_body']) || { };
+    const json = JSON.parse(res['_body'])
+    return json.code && json.code == 1000 ? {"id":"1","name":"Daredevil","image":"http://i.annihil.us/u/prod/marvel/i/mg/6/90/537ba6d49472b/standard_xlarge.jpg"} : json;
   }
 
   getHero(id: number): Promise<Hero> {

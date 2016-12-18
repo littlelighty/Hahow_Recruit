@@ -1,13 +1,13 @@
 <div class="grid grid-pad" id="heroList">
-    <div *ngFor="let hero of heroes" class="heroCard" [class.selected]="hero === selectedHero" (click)="onSelect(hero);selectOthers();" >
+    <div *ngFor="let hero of heroes" class="heroCard" [class.selected]="hero === selectedHero" (click)="onSelect(hero)" >
         <img class="heroImg" src="{{hero.image}}" />
         <h2 class="heroName">{{hero.name}}</h2>
     </div>
 </div>
 <!--<my-hero-profile [hero]="selectedHero"></my-hero-profile>-->
 
-<div *ngIf="hero" class="heroProfile">
-  <h2>{{hero.name}} profile!</h2>
+<div *ngIf="hero&&profile" class="heroProfile">
+  <!--<h2>{{hero.name}} profile!</h2>-->
   <li id="str_1" class="skill">STR
     <div class="add" (click)="addStr();">+</div>
     <div class="skill_val">{{profile.str}}</div>
@@ -30,6 +30,6 @@
   </li>
   <div class="save">
     <p class="left">剩餘點數:{{total-profile.str-profile.int-profile.agi-profile.luk}}</p>
-    <div class="saveBtn">儲存</div>
+    <div class="saveBtn" (click)="save()">儲存</div>
   </div>
 </div>
