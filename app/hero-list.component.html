@@ -1,0 +1,7 @@
+<div class="grid grid-pad" id="heroList">
+    <div *ngFor="let hero of heroes" class="heroCard" [routerLink]="['/heroes', hero.id]" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+        <img class="heroImg" src="{{hero.image}}" />
+        <h2 class="heroName">{{hero.name}}</h2>
+    </div>
+</div>
+<my-hero-profile [hero]="selectedHero"></my-hero-profile>
