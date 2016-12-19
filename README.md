@@ -52,6 +52,7 @@ npm會暫時為你架一個後台來跑這個專案，可透過`Ctrl-C`中斷
 <ol>
 	<li>高估自己學習能力，導致時間掌控出問題：
 		<li style="list-style: none;">由於有一週的時間，抱著先把基礎打好的心態，花了很多時間上了在Hahow上買的墨雨設計-吳哲宇老師的前端課程，重新學習HTML、CSS，並進一步學習jquery與ajax，也做了許多作業小專案。當時自認為學習的還不錯，便開始先用codepen試寫看看hahow的專案，在上面建構好了大致的view，同時也花了許多時間用jquery與ajax去取得與更新API的資料
+		</li>
 	</li>
 	<li>高估自己學習能力，導致時間掌控出問題：
 		<li style="list-style: none;">由於有一週的時間，抱著先把基礎打好的心態，花了很多時間上了在Hahow上買的墨雨設計-吳哲宇老師的前端課程，重新學習HTML、CSS，並進一步學習jquery與ajax，也做了許多作業小專案。當時自認為學習的還不錯，便開始先用codepen試寫看看hahow的專案，在上面建構好了大致的view，同時也花了許多時間用jquery與ajax去取得與更新API的資料
