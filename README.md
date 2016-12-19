@@ -74,7 +74,7 @@ npm會暫時為你架一個後台來跑這個專案，可透過`Ctrl-C`中斷
 		<p>最常見的解決方法。語言的不熟悉以及一些比較小的問題基本上都用這個解決，google幾個關鍵字就能找到答案。此外一開始的Angular也是先找了youtube上的一個教學影片來看，讓自己有點基本認知。</p>
 	</li>
 	<li>Tutorial
-		<p>然而這個影片獎的又太淺，所以後來一位學長還是推薦我去看Angular官方的tutorial，跟著他的flow去學習，同時去了解整個Angular的架構(例如模組/元件的定義、元件之間如何互動等等)、以及常見的寫法(例如app元件較常用來做navigation而已，裡面才會有其他child元件去顯示或service元件去取得資料等)，如此一來有了big picture再回來寫code是有些幫助的。</p>
+		<p>然而這個影片講的又太淺，所以後來一位學長還是推薦我去看Angular官方的tutorial，跟著他的flow去學習，同時去了解整個Angular的架構(例如模組/元件的定義、元件之間如何互動等等)、以及常見的寫法(例如app元件較常用來做navigation而已，裡面才會有其他child元件去顯示或service元件去取得資料等)，如此一來有了big picture再回來寫code是有些幫助的。</p>
 	</li>
 	<li>找人問
 		<p>最有效率的解決問題方法。像是git的使用就問了幾個scenario的實作方法與對應結果；當tutorial中有些部分看不懂時，就去請教已經會了的朋友；甚至是Chrome Dev Tools的使用也是當code中有些bug實在找不出來時，朋友教我如何用它去看console.log以及設定停止點來trace問題出處。</p>
