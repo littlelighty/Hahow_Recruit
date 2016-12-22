@@ -71,19 +71,20 @@ export class HeroProfileComponent implements OnInit {
   }
 
   //確認有get到hero資料用
-  ngDoCheck() {
-    if (this.hero) {
-      if (this.prevHero === undefined || this.prevHero.id !== this.hero.id) {
-        this.prevHero = this.hero
-        this.onSelect(this.hero)
-      }
-    }
-  }
+  // ngDoCheck() {
+  //   if (this.hero) {
+  //     if (this.prevHero === undefined || this.prevHero.id !== this.hero.id) {
+  //       this.prevHero = this.hero
+  //       this.onSelect(this.hero)
+  //     }
+  //   }
+  // }
 
   //點擊hero card要變換網址並去取得該hero的詳細屬性，同時計算屬性能力點數總和
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
     this.router.navigate(['/heroes', this.selectedHero.id]);
+    console.log(this.selectedHero);
     this.profileService.getProfile(this.selectedHero.id)
       .then(profile => {
         this.profile = profile

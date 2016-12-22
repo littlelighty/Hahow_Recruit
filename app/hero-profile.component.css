@@ -3,10 +3,6 @@
   position: relative;
   color: #111;
 }
-.selected {
-    border: solid 3px #FA8B00;
-}
-
 
  #heroList {
     border: solid 1px #111;
@@ -44,7 +40,9 @@
     color: #eee;
     font-weight: bold;
 }
-
+.heroCard.selected {
+    border: solid 3px #FA8B00;
+}
 
 .heroProfile {
   margin-top: 2em;
