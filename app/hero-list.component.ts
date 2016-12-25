@@ -7,7 +7,7 @@ import { HeroService } from './hero.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-hero-list',
+  selector: 'hero-list',
   templateUrl: `./hero-list.component.html`,
   styleUrls: [`./hero-list.component.css`],
   providers: [HeroService]

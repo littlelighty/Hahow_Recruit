@@ -9,4 +9,6 @@
         "app/**.map": true,
         "**.json": true
     }
+,
+"typescript.tsdk": "./node_modules/typescript/lib"
 }
