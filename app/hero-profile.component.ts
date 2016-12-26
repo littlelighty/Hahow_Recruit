@@ -41,56 +41,42 @@ export class HeroProfileComponent implements OnInit {
   ) {}
 
   //取得hero list
-  getHeroes() {
-    this.heroService.getHeroes()
-                     .then(
-                       heroes => this.heroes = heroes,
-                       error =>  this.errorMessage = <any>error);
-  }
+  // getHeroes() {
+  //   this.heroService.getHeroes()
+  //                    .then(
+  //                      heroes => this.heroes = heroes,
+  //                      error =>  this.errorMessage = <any>error);
+  // }
 
   //取得個別hero資料
-  getHero() {
-    this.route.params
-      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
-      .subscribe(hero => this.hero = hero);
-      console.log(this.hero);
+  getHero(id: number) {
+    console.log("in getHero, id = " + id);
+    return this.heroService.getHero(id).then(hero=>this.hero=hero);
   }
 
   //取得個別hero詳細屬性
-  getProfile() {
-    this.route.params
-      .switchMap((params: Params) => this.profileService.getProfile(+params['id']))
-      .subscribe(profile => this.profile = profile);
+  getProfile(id: number) {
+    console.log("in getProfile, id = " + id);
+    return this.profileService.getProfile(id).then(profile=>this.profile=profile);
   }
 
   //讓程式非同步適時去執行3個函式
   ngOnInit(): void {
-    this.getHeroes();
-    this.getHero();
-    this.getProfile();
-  }
-
-  //確認有get到hero資料用
-  // ngDoCheck() {
-  //   if (this.hero) {
-  //     if (this.prevHero === undefined || this.prevHero.id !== this.hero.id) {
-  //       this.prevHero = this.hero
-  //       this.onSelect(this.hero)
-  //     }
-  //   }
-  // }
-
-  //點擊hero card要變換網址並去取得該hero的詳細屬性，同時計算屬性能力點數總和
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.router.navigate(['/heroes', this.selectedHero.id]);
-    console.log(this.selectedHero);
-    this.profileService.getProfile(this.selectedHero.id)
-      .then(profile => {
-        this.profile = profile
-        this.total=this.profile.str + this.profile.int + this.profile.agi + this.profile.luk;
-        this.skillPointLeft = this.total - (this.profile.str + this.profile.int + this.profile.agi + this.profile.luk);
-      })
+    // this.getHeroes();
+    this.route.params.forEach((params: Params) => {
+      console.log("in ngOnInit, params = " + params);
+      let id = +params['id'];
+      this.getHero(id).then(hero=>{
+        console.log("in ngOnInit getHero, id = " + id);
+        console.log("in ngOnInit getHero, hero = " + this.hero);
+      });
+      this.getProfile(id).then(profile=>{
+        console.log("in ngOnInit getProfile, profile = " + this.profile);
+        this.total=this.profile.str+this.profile.int+this.profile.agi+this.profile.luk;
+        this.skillPointLeft=this.total-(this.profile.str+this.profile.int+this.profile.agi+this.profile.luk);
+      });
+    });
+    console.log("End of ngOnInit, profile = " + this.profile + ", hero = " + this.hero);
   }
 
   //下列為屬性能力值加減按鈕用之函式
