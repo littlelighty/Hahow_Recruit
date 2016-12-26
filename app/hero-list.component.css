@@ -3,9 +3,7 @@
   position: relative;
   color: #111;
 }
-.selected {
-    border: solid 3px #FA8B00;
-}
+
 #heroList {
     border: solid 1px #111;
     padding: 10px;
@@ -16,7 +14,6 @@
     align-items: center;
     flex-wrap: wrap;
 }
-
 .heroCard {
     border: solid 1px #111;
     display: inline-block;
@@ -27,6 +24,7 @@
     cursor: pointer;
     opacity: 0.9;
 }
+
 .heroCard:hover {
     opacity: 1;
 }
@@ -41,4 +39,7 @@
     background-color: #FA8B00;
     color: #eee;
     font-weight: bold;
+}
+.heroCard.selected{
+    border: solid 5px #FA8B00;
 }

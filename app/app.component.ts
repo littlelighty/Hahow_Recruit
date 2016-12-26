@@ -6,7 +6,7 @@ import { Route, RouterModule }   from '@angular/router';
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-    <router-outlet></router-outlet>
+    <hero-list>Loading Hero List...</hero-list>
   `
 })
 export class AppComponent{
