@@ -7,6 +7,7 @@
 <!--<my-hero-profile [hero]="selectedHero"></my-hero-profile>-->
 
 <div *ngIf="hero&&profile" class="heroProfile">
+  <div class="exitProfile" [routerLink]="['/']">X</div>
   <h2>{{hero.name}} profile</h2>
   <li id="str_1" class="skill">STR
     <div class="add" (click)="addStr();">+</div>

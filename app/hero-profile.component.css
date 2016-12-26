@@ -53,6 +53,24 @@
   transform: translateX(-50%) translateY(-30%);*/
   border: solid 1px #111;
 }
+.heroProfile .exitProfile {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  font-size: 21px;
+  text-align: center;
+  right: 0px;
+  top: 0px;
+  margin: 0px;
+  padding: 2px;
+  box-sizing: border-box;
+  background-color: #f24;
+  cursor: pointer;
+  color: white;
+}
+.heroProfile .exitProfile:hover {
+  background-color: #cc001f;
+}
 .heroProfile .h2{
   margin-left: 5em;
   font-weight: 900;
