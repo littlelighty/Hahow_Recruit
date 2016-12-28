@@ -1,0 +1,35 @@
+<div *ngIf="hero&&profile" class="heroProfile">
+  
+  <div class="heroProfile__exit" [routerLink]="['']" (click)="cancelSelected()">X</div>
+  <h2>{{hero.name}} profile</h2>
+
+  <li id="str_1" class="heroProfile__skill">STR
+    <div class="heroProfile__skill__add" (click)="addStr();">+</div>
+    <div class="heroProfile__skill__val">{{profile.str}}</div>
+    <div class="heroProfile__skill__minus" (click)="minusStr();">-</div>
+  </li>
+
+  <li id="int_1" class="heroProfile__skill">INT
+    <div class="heroProfile__skill__add" (click)="addInt();">+</div>
+    <div class="heroProfile__skill__val">{{profile.int}}</div>
+    <div class="heroProfile__skill__minus" (click)="minusInt();">-</div>
+  </li>
+
+  <li id="agi_1" class="heroProfile__skill">AGI
+    <div class="heroProfile__skill__add" (click)="addAgi();">+</div>
+    <div class="heroProfile__skill__val">{{profile.agi}}</div>
+    <div class="heroProfile__skill__minus" (click)="minusAgi();">-</div>
+  </li>
+
+  <li id="luk_1" class="heroProfile__skill">LUK
+    <div class="heroProfile__skill__add" (click)="addLuk();">+</div>
+    <div class="heroProfile__skill__val">{{profile.luk}}</div>
+    <div class="heroProfile__skill__minus" (click)="minusLuk();">-</div>
+  </li>
+
+  <div class="heroProfile__save">
+    <p>剩餘點數:{{total-profile.str-profile.int-profile.agi-profile.luk}}</p>
+    <div class="heroProfile__save__button" (click)="save()">儲存</div>
+  </div>
+
+</div>
