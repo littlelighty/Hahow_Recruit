@@ -40,14 +40,6 @@ export class HeroProfileComponent implements OnInit {
     private location: Location
   ) {}
 
-  //取得hero list
-  // getHeroes() {
-  //   this.heroService.getHeroes()
-  //                    .then(
-  //                      heroes => this.heroes = heroes,
-  //                      error =>  this.errorMessage = <any>error);
-  // }
-
   //取得個別hero資料
   getHero(id: number) {
     console.log("in getHero, id = " + id);
