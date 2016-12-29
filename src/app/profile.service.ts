@@ -23,7 +23,6 @@ export class ProfileService {
 
   //針對取得之屬性資料做處理後回傳
   private extractData(res: Response) {
-    // console.log(res);
     return JSON.parse(res['_body']) || { };
   }
 

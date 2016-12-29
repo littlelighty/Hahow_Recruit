@@ -3,14 +3,18 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
+
 import { Hero } from './hero';
+import { HeroProfileComponent } from './hero-profile/hero-profile.component';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class HeroService {
   private heroesUrl = 'http://hahow-recruit.herokuapp.com/heroes';
 
-  constructor (private http: Http) {}
+  constructor (
+    private http: Http
+  ) {}
   idRec: number;
 
   //把所有hero資料取出，輸出後成為hero list
@@ -23,7 +27,6 @@ export class HeroService {
 
   //處理get出來的資料，並對一些特殊情況(EX:"code":1000,"message":"Backend error")去做處理，但這邊還沒處理好，只是先都給第一個hero的資料
   private extractData(res: Response) {
-    // console.log(res);
     const json = JSON.parse(res['_body'])
     return json;
   }
@@ -43,8 +46,11 @@ export class HeroService {
     console.log(res);
     const json = JSON.parse(res['_body'])
     if(json.code == 1000){
-      alert("Backend error, please select hero card again.");
+      //document.getElementsByClassName("heroCard selected")[0].className='heroCard';
+      alert("Oops!! Something wrong fetching hero information. Please try again :)");
+      // this.heroProfileComponent.cancelSelected();
       // this.getHero(this.idRec);
+      //console.log("idRec = " + this.idRec);
     }
     else
       return json;
