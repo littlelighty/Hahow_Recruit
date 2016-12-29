@@ -24,13 +24,9 @@ export class HeroProfileComponent implements OnInit {
   errorMessage: string;
   hero: Hero;
   profile: Profile;
-  selectedHero: Hero;
-  selectedProfile: Profile;
   total: number;
   skillPointLeft: number;
-  heroes: Hero[];
   mode = 'Observable';
-  prevHero: Hero;
   
   constructor(
     private router: Router,
@@ -139,7 +135,7 @@ export class HeroProfileComponent implements OnInit {
   //將更改完之能力值update
   save() :void{
     if(this.skillPointLeft==0){
-      this.profileService.saveProfile(this.selectedHero.id, this.profile)
+      this.profileService.saveProfile(this.hero.id, this.profile)
         .then((result) => {
           console.log(result)
       })
