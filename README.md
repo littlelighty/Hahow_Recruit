@@ -13,7 +13,7 @@
 ## 第二週新增 (edited 2016/12/29)
 
 ```bash
-!!! 此次專案版本有變動，執行方法請參考新的版本 !!!
+!!! 此次專案版本有變動，執行方法請參考<a href="#execute">新的版本</a> !!!
 ```
 <h4>本週新增與完成之事項如下：</h4>
 
@@ -51,6 +51,7 @@
 * 專案中遇到的困難、問題，以及解決的方法
 * 心得與感想
 
+<a name="execute">
 ## 如何執行 (edited 2016/12/19)
 
 這份專案是用Angular搭配Node.js與npm做開發
@@ -62,7 +63,7 @@
 git clone https://github.com/littlelighty/Hahow_Recruit  FOLDER_NAME
 cd FOLDER_NAME
 npm install
-ng server
+ng serve
 在瀏覽器輸入localhost:4200/
 ```
 npm會暫時為你架一個後台來跑這個專案，可透過`Ctrl-C`中斷
