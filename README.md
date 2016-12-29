@@ -12,6 +12,9 @@
 
 ## 第二週新增 (edited 2016/12/29)
 
+```bash
+!!! 此次專案版本有變動，執行方法請參考新的版本 !!!
+```
 <h4>本週新增與完成之事項如下：</h4>
 
 * 用router完成換頁過程不重新讀取Hero List之要求
@@ -23,6 +26,7 @@
 * 刪除一些沒必要的code與註解
 * 調整資料架構，讓每個component有自己的file，不會太多東西都雜放在一起
 
+<br>
 <h4>還在努力中但尚未完成的部分：</h4>
 
 * 互動部分原本想用好看一點的popup window而不是alert，參考了Angular2 Bootstrap3 Modal Component，但目前跑出的popup還有點問題沒解決
@@ -30,13 +34,14 @@
 * 把加減點數的功能獨立出來自成component，在前兩項花費太多時間，來不及implement這個
 * 若對Hero Profile編輯過，還沒儲存就按X離開，應該要跳出一個確認視窗之類的東西，不過這是寫README寫到一半才想到的所以來不及加上去了XD
 
+<br>
 <h4>其他補充：</h4>
 本週遇到最大的問題其實是環境設置的問題。<br><br>
 最一開始是想要用sass時遇到，在原本的專案資料夾明明按照教學上把該裝的都裝了，也確定sass的語法沒有錯，但在套用時始終沒辦法正確呈現。後來是另外建了一個資料夾、重新安裝npm套件、並用Angular-CLI來建立專案範本、再把code移植過來、然後把該裝的(node-sass、sass-loader等)裝一裝，才終於能讓版面正確呈現，但詳細原因還是不太清楚...。<br><br>
-接著因為改用Angular-CLI而重新push了一份到Github上，但後來發現如果直接clone下來然後ng serve會有error出現(原本也只要npm start就好)，即便重新npm install也無法改善，trace了很久，但Angular檔案實在太多太雜，然後又有不明原因有些檔案push上去之後沒有被clone下來，測了很久，最後解決方法是一開始就不要把node_modules資料夾push上去，等clone下來之後直接整個npm install一次就可以了，不太確定是不是package.jsom要安裝的跟原本node_modules裡有版本衝突還怎樣，但終究也是解決一個問題。
+接著因為改用Angular-CLI而重新push了一份到Github上，但後來發現如果直接clone下來然後ng serve會有error出現(原本也只要npm start就好)，即便重新npm install也無法改善，trace了很久，但Angular檔案實在太多太雜，然後又有不明原因有些檔案push上去之後沒有被clone下來，測了很久，最後解決方法是一開始就不要把node_modules資料夾push上去，等clone下來之後直接整個npm install一次就可以了，不太確定是不是package.jsom要安裝的跟原本node_modules裡有版本衝突還怎樣，但終究也是解決一個問題。<br><br>
 
 
-## 第一週新增 (edited 2016/12/19)
+## 第一週新增 
 
 <h4>這份README會分成以下幾個部份</h4>
 
@@ -46,7 +51,7 @@
 * 專案中遇到的困難、問題，以及解決的方法
 * 心得與感想
 
-## 如何執行
+## 如何執行 (edited 2016/12/19)
 
 這份專案是用Angular搭配Node.js與npm做開發
 若還沒有安裝過，<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
@@ -56,7 +61,9 @@
 ```bash
 git clone https://github.com/littlelighty/Hahow_Recruit  FOLDER_NAME
 cd FOLDER_NAME
-npm start
+npm install
+ng server
+在瀏覽器輸入localhost:4200/
 ```
 npm會暫時為你架一個後台來跑這個專案，可透過`Ctrl-C`中斷
 
