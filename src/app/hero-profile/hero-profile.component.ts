@@ -12,7 +12,6 @@ import { HeroService } from '../hero.service';
 import { ProfileService } from '../profile.service';
 
 @Component({
-  // moduleId: module.id,
   selector: 'my-hero-profile',
   templateUrl: `./hero-profile.component.html`,
   styleUrls: ['./hero-profile.component.scss'],
@@ -21,7 +20,6 @@ import { ProfileService } from '../profile.service';
 
 export class HeroProfileComponent implements OnInit {
   @Input()
-  errorMessage: string;
   hero: Hero;
   profile: Profile;
   total: number;
@@ -142,12 +140,15 @@ export class HeroProfileComponent implements OnInit {
     if(this.skillPointLeft==0){
       this.profileService.saveProfile(this.hero.id, this.profile)
         .then((result) => {
-          console.log(result)
+          alert("你已成功編輯英雄屬性！");
       })
     }
+    else
+      alert("你還有剩餘點數沒用完呢！");
   }
 
+  //按X離開Profile時要把class恢復，將橘色框線與陰影取消掉
   cancelSelected() :void{
-    document.getElementsByClassName("heroCard selected")[0].className='heroCard';
+    document.getElementsByClassName("heroList__heroCard selected")[0].className='heroList__heroCard';
   }
 }

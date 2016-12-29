@@ -26,15 +26,16 @@ export class HeroListComponent implements OnInit {
                        heroes => this.heroes = heroes,
                        error =>  this.errorMessage = <any>error
     );
-  }
+  }s
 
   //讓程式非同步適時去執行getHeroes函式
   ngOnInit(): void {
     this.getHeroes();
   }
 
-  //選取特定hero card
+  //選取特定hero card、更改class、加上橘色框線與陰影
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+    document.getElementsByClassName("heroList__heroCard")[hero.id-1].className="heroList__heroCard selected";
   }
 }

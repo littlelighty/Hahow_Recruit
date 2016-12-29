@@ -1,7 +1,7 @@
 <div id="heroList">
-    <div *ngFor="let hero of heroes" class="heroCard" [class.selected]="hero === selectedHero" [routerLink]="['/', hero.id]" (click)="onSelect(hero)">
-        <img class="heroCard__img" src="{{hero.image}}" alt="{{hero.name}}"/>
-        <h2 class="heroCard__name">{{hero.name}}</h2>
+    <div *ngFor="let hero of heroes" class="heroList__heroCard" [class.selected]="hero === selectedHero" [routerLink]="['/', hero.id]" (click)="onSelect(hero)">
+        <img class="heroList__heroCard__img" src="{{hero.image}}" alt="{{hero.name}}"/>
+        <h2 class="heroList__heroCard__name">{{hero.name}}</h2>
     </div>
 </div>
 <router-outlet></router-outlet>
