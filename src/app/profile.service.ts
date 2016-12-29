@@ -27,7 +27,7 @@ export class ProfileService {
   }
 
   //update屬性資料
-  saveProfile(id: number, profile: Profile): Promise<Profile>{
+  saveProfile(id: number, profile: Profile): Promise<Response>{
     var strPATCH='http://hahow-recruit.herokuapp.com/heroes/'+id+'/profile'
     return this.http.patch(strPATCH, profile)
                     .toPromise()

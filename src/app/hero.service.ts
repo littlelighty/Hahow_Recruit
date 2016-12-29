@@ -47,10 +47,11 @@ export class HeroService {
     const json = JSON.parse(res['_body'])
     if(json.code == 1000){
       //document.getElementsByClassName("heroCard selected")[0].className='heroCard';
-      alert("Oops!! Something wrong fetching hero information. Please try again :)");
+      //alert("Oops!! Something wrong fetching hero information. Please try again :)");
       // this.heroProfileComponent.cancelSelected();
       // this.getHero(this.idRec);
       //console.log("idRec = " + this.idRec);
+      return null
     }
     else
       return json;

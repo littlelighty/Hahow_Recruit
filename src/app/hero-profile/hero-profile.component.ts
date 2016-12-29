@@ -38,7 +38,12 @@ export class HeroProfileComponent implements OnInit {
 
   //呼叫heroService，取得個別hero資料
   getHero(id: number) {
-    this.heroService.getHero(id).then(hero=>this.hero=hero);
+    this.heroService.getHero(id).then(hero=>{
+      if(hero==null)
+        this.getHero(id);
+      else
+        this.hero=hero;
+    });
   }
 
   //呼叫profileService，取得個別hero詳細屬性，同時計算該hero的屬性加總與剩餘點數
