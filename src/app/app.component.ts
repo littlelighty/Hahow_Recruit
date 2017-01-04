@@ -2,6 +2,7 @@
 
 import { Component } from '@angular/core';
 import { Route, RouterModule }   from '@angular/router';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'my-app',

@@ -30,7 +30,7 @@ export class HeroListComponent implements OnInit {
 
   //讓程式非同步適時去執行getHeroes函式
   ngOnInit(): void {
-    this.getHeroes();
+    this.getHeroes();    
   }
 
   //選取特定hero card、更改class、加上橘色框線與陰影

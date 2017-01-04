@@ -1,5 +1,34 @@
+//MAIN COLORS
+$color_white: #f3f3f3;
+$color_black: #111;
+$color_red: #f24;
+$color_dark_red: #cc001f;
+$color_gray: #bbb;
+$color_dark_gray: #999;
+$color_hahow_green: #00BEA4;
+$color_hahow_dark_green: #009F87;
+$color_hahow_orange: #FA8B00;
+$color_hahow_dark_orange: #EB5E00;
+
+//FONT SETTING
+$font_family: "Roboto Condensed", sans-serif, 微軟正黑體;
+
+* {
+  font-family: $font_family;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
 h1 {
-  color: #00BEA4;
+  color: $color_hahow_green;
   font-size: 250%;
   text-align: center;
 }
